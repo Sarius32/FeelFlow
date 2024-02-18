@@ -1,0 +1,499 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CD337EBE2B81A17A00741539 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EBD2B81A17A00741539 /* AppDelegate.m */; };
+		CD337EC12B81A17A00741539 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EC02B81A17A00741539 /* SceneDelegate.m */; };
+		CD337EC42B81A17A00741539 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EC32B81A17A00741539 /* ViewController.m */; };
+		CD337EC72B81A17A00741539 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD337EC52B81A17A00741539 /* Main.storyboard */; };
+		CD337ECA2B81A17A00741539 /* FeelFlow.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CD337EC82B81A17A00741539 /* FeelFlow.xcdatamodeld */; };
+		CD337ECC2B81A17B00741539 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD337ECB2B81A17B00741539 /* Assets.xcassets */; };
+		CD337ECF2B81A17B00741539 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD337ECD2B81A17B00741539 /* LaunchScreen.storyboard */; };
+		CD337ED22B81A17B00741539 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337ED12B81A17B00741539 /* main.m */; };
+		CD337EDF2B81A69100741539 /* LastVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337ED92B81A69100741539 /* LastVC.m */; };
+		CD337EE02B81A69100741539 /* MiddleVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EDA2B81A69100741539 /* MiddleVC.m */; };
+		CD337EE12B81A69100741539 /* MainVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EDC2B81A69100741539 /* MainVC.m */; };
+		CD337EE42B81AE5600741539 /* HealthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EE32B81AE5600741539 /* HealthManager.m */; };
+		CD337EE72B81C83A00741539 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD337EE62B81C83A00741539 /* HealthKit.framework */; };
+		CD337EE92B81DA0800741539 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD337EE82B81DA0800741539 /* MobileCoreServices.framework */; };
+		CD337EF42B81E45C00741539 /* LXFCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD337EEB2B81E45C00741539 /* LXFCameraController.xib */; };
+		CD337EF52B81E45C00741539 /* LXFCameraButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EEE2B81E45C00741539 /* LXFCameraButton.m */; };
+		CD337EF62B81E45C00741539 /* LXFCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EF02B81E45C00741539 /* LXFCameraController.m */; };
+		CD337EF72B81E45C00741539 /* LXFPhotoLibraryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CD337EF22B81E45C00741539 /* LXFPhotoLibraryManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CD337EB92B81A17A00741539 /* FeelFlow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeelFlow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD337EBC2B81A17A00741539 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		CD337EBD2B81A17A00741539 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		CD337EBF2B81A17A00741539 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		CD337EC02B81A17A00741539 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		CD337EC22B81A17A00741539 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		CD337EC32B81A17A00741539 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		CD337EC62B81A17A00741539 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CD337EC92B81A17A00741539 /* FeelFlow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FeelFlow.xcdatamodel; sourceTree = "<group>"; };
+		CD337ECB2B81A17B00741539 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CD337ECE2B81A17B00741539 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CD337ED02B81A17B00741539 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD337ED12B81A17B00741539 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CD337ED82B81A19100741539 /* FeelFlow.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FeelFlow.entitlements; sourceTree = "<group>"; };
+		CD337ED92B81A69100741539 /* LastVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LastVC.m; sourceTree = "<group>"; };
+		CD337EDA2B81A69100741539 /* MiddleVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MiddleVC.m; sourceTree = "<group>"; };
+		CD337EDB2B81A69100741539 /* MainVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainVC.h; sourceTree = "<group>"; };
+		CD337EDC2B81A69100741539 /* MainVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainVC.m; sourceTree = "<group>"; };
+		CD337EDD2B81A69100741539 /* LastVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LastVC.h; sourceTree = "<group>"; };
+		CD337EDE2B81A69100741539 /* MiddleVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MiddleVC.h; sourceTree = "<group>"; };
+		CD337EE22B81AE5600741539 /* HealthManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HealthManager.h; sourceTree = "<group>"; };
+		CD337EE32B81AE5600741539 /* HealthManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HealthManager.m; sourceTree = "<group>"; };
+		CD337EE62B81C83A00741539 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CD337EE82B81DA0800741539 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		CD337EEB2B81E45C00741539 /* LXFCameraController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LXFCameraController.xib; sourceTree = "<group>"; };
+		CD337EED2B81E45C00741539 /* LXFCameraButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXFCameraButton.h; sourceTree = "<group>"; };
+		CD337EEE2B81E45C00741539 /* LXFCameraButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXFCameraButton.m; sourceTree = "<group>"; };
+		CD337EEF2B81E45C00741539 /* LXFCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXFCameraController.h; sourceTree = "<group>"; };
+		CD337EF02B81E45C00741539 /* LXFCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXFCameraController.m; sourceTree = "<group>"; };
+		CD337EF22B81E45C00741539 /* LXFPhotoLibraryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXFPhotoLibraryManager.m; sourceTree = "<group>"; };
+		CD337EF32B81E45C00741539 /* LXFPhotoLibraryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXFPhotoLibraryManager.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CD337EB62B81A17A00741539 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD337EE72B81C83A00741539 /* HealthKit.framework in Frameworks */,
+				CD337EE92B81DA0800741539 /* MobileCoreServices.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CD337EB02B81A17A00741539 = {
+			isa = PBXGroup;
+			children = (
+				CD337EBB2B81A17A00741539 /* FeelFlow */,
+				CD337EBA2B81A17A00741539 /* Products */,
+				CD337EE52B81C83900741539 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		CD337EBA2B81A17A00741539 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EB92B81A17A00741539 /* FeelFlow.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CD337EBB2B81A17A00741539 /* FeelFlow */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EEA2B81E45B00741539 /* LXFAVFoundation */,
+				CD337EF12B81E45C00741539 /* LXFPhotoLibraryManager */,
+				CD337ED82B81A19100741539 /* FeelFlow.entitlements */,
+				CD337EBC2B81A17A00741539 /* AppDelegate.h */,
+				CD337EBD2B81A17A00741539 /* AppDelegate.m */,
+				CD337EBF2B81A17A00741539 /* SceneDelegate.h */,
+				CD337EC02B81A17A00741539 /* SceneDelegate.m */,
+				CD337EC22B81A17A00741539 /* ViewController.h */,
+				CD337EC32B81A17A00741539 /* ViewController.m */,
+				CD337EDD2B81A69100741539 /* LastVC.h */,
+				CD337ED92B81A69100741539 /* LastVC.m */,
+				CD337EDB2B81A69100741539 /* MainVC.h */,
+				CD337EDC2B81A69100741539 /* MainVC.m */,
+				CD337EDE2B81A69100741539 /* MiddleVC.h */,
+				CD337EDA2B81A69100741539 /* MiddleVC.m */,
+				CD337EE22B81AE5600741539 /* HealthManager.h */,
+				CD337EE32B81AE5600741539 /* HealthManager.m */,
+				CD337EC52B81A17A00741539 /* Main.storyboard */,
+				CD337ECB2B81A17B00741539 /* Assets.xcassets */,
+				CD337ECD2B81A17B00741539 /* LaunchScreen.storyboard */,
+				CD337ED02B81A17B00741539 /* Info.plist */,
+				CD337ED12B81A17B00741539 /* main.m */,
+				CD337EC82B81A17A00741539 /* FeelFlow.xcdatamodeld */,
+			);
+			path = FeelFlow;
+			sourceTree = "<group>";
+		};
+		CD337EE52B81C83900741539 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EE82B81DA0800741539 /* MobileCoreServices.framework */,
+				CD337EE62B81C83A00741539 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD337EEA2B81E45B00741539 /* LXFAVFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EEB2B81E45C00741539 /* LXFCameraController.xib */,
+				CD337EEC2B81E45C00741539 /* LXFCameraButton */,
+				CD337EEF2B81E45C00741539 /* LXFCameraController.h */,
+				CD337EF02B81E45C00741539 /* LXFCameraController.m */,
+			);
+			path = LXFAVFoundation;
+			sourceTree = "<group>";
+		};
+		CD337EEC2B81E45C00741539 /* LXFCameraButton */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EED2B81E45C00741539 /* LXFCameraButton.h */,
+				CD337EEE2B81E45C00741539 /* LXFCameraButton.m */,
+			);
+			path = LXFCameraButton;
+			sourceTree = "<group>";
+		};
+		CD337EF12B81E45C00741539 /* LXFPhotoLibraryManager */ = {
+			isa = PBXGroup;
+			children = (
+				CD337EF22B81E45C00741539 /* LXFPhotoLibraryManager.m */,
+				CD337EF32B81E45C00741539 /* LXFPhotoLibraryManager.h */,
+			);
+			path = LXFPhotoLibraryManager;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CD337EB82B81A17A00741539 /* FeelFlow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD337ED52B81A17B00741539 /* Build configuration list for PBXNativeTarget "FeelFlow" */;
+			buildPhases = (
+				CD337EB52B81A17A00741539 /* Sources */,
+				CD337EB62B81A17A00741539 /* Frameworks */,
+				CD337EB72B81A17A00741539 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FeelFlow;
+			productName = FeelFlow;
+			productReference = CD337EB92B81A17A00741539 /* FeelFlow.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CD337EB12B81A17A00741539 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1410;
+				TargetAttributes = {
+					CD337EB82B81A17A00741539 = {
+						CreatedOnToolsVersion = 14.1;
+					};
+				};
+			};
+			buildConfigurationList = CD337EB42B81A17A00741539 /* Build configuration list for PBXProject "FeelFlow" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CD337EB02B81A17A00741539;
+			productRefGroup = CD337EBA2B81A17A00741539 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CD337EB82B81A17A00741539 /* FeelFlow */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CD337EB72B81A17A00741539 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD337ECF2B81A17B00741539 /* LaunchScreen.storyboard in Resources */,
+				CD337ECC2B81A17B00741539 /* Assets.xcassets in Resources */,
+				CD337EC72B81A17A00741539 /* Main.storyboard in Resources */,
+				CD337EF42B81E45C00741539 /* LXFCameraController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CD337EB52B81A17A00741539 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD337EDF2B81A69100741539 /* LastVC.m in Sources */,
+				CD337EE12B81A69100741539 /* MainVC.m in Sources */,
+				CD337ED22B81A17B00741539 /* main.m in Sources */,
+				CD337EF72B81E45C00741539 /* LXFPhotoLibraryManager.m in Sources */,
+				CD337EF52B81E45C00741539 /* LXFCameraButton.m in Sources */,
+				CD337EE02B81A69100741539 /* MiddleVC.m in Sources */,
+				CD337EC42B81A17A00741539 /* ViewController.m in Sources */,
+				CD337EE42B81AE5600741539 /* HealthManager.m in Sources */,
+				CD337ECA2B81A17A00741539 /* FeelFlow.xcdatamodeld in Sources */,
+				CD337EBE2B81A17A00741539 /* AppDelegate.m in Sources */,
+				CD337EC12B81A17A00741539 /* SceneDelegate.m in Sources */,
+				CD337EF62B81E45C00741539 /* LXFCameraController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CD337EC52B81A17A00741539 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD337EC62B81A17A00741539 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CD337ECD2B81A17B00741539 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CD337ECE2B81A17B00741539 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CD337ED32B81A17B00741539 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		CD337ED42B81A17B00741539 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CD337ED62B81A17B00741539 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FeelFlow/FeelFlow.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeelFlow/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "录制视频需要获取相机权限";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "获取健康信息用于数据分析";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "获取健康信息用于数据分析";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "录制视频需要获取麦克风权限";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "录制视频记录信息";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "录制视频记录信息";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pingan.FeelFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CD337ED72B81A17B00741539 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FeelFlow/FeelFlow.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FeelFlow/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "录制视频需要获取相机权限";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "获取健康信息用于数据分析";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "获取健康信息用于数据分析";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "录制视频需要获取麦克风权限";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "录制视频记录信息";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "录制视频记录信息";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pingan.FeelFlow;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CD337EB42B81A17A00741539 /* Build configuration list for PBXProject "FeelFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD337ED32B81A17B00741539 /* Debug */,
+				CD337ED42B81A17B00741539 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CD337ED52B81A17B00741539 /* Build configuration list for PBXNativeTarget "FeelFlow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CD337ED62B81A17B00741539 /* Debug */,
+				CD337ED72B81A17B00741539 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CD337EC82B81A17A00741539 /* FeelFlow.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CD337EC92B81A17A00741539 /* FeelFlow.xcdatamodel */,
+			);
+			currentVersion = CD337EC92B81A17A00741539 /* FeelFlow.xcdatamodel */;
+			path = FeelFlow.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = CD337EB12B81A17A00741539 /* Project object */;
+}
