@@ -5,8 +5,21 @@ import cors from "cors";
 import express, { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import { newUserRouter, saveSleepRouter, sleepSavedRouter } from "./routes";
 import { UserRequest } from "./types";
+
+import { connectToDB } from "./mongoService";
+import {
+  createNewUser,
+  retrieveEvaluation,
+  retrieveMoods,
+  retrievePrediction,
+  retrieveSleep,
+  retrieveSteps,
+  uploadEvaluation,
+  uploadMood,
+  uploadSleep,
+  uploadSteps,
+} from "./routes";
 
 function authenticateToken(
   req: UserRequest,
@@ -30,32 +43,30 @@ function authenticateToken(
   });
 }
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+connectToDB().then(() => {
+  const app = express();
+  app.use(cors());
+  app.use(express.json());
 
-app.post(`/api/${process.env.API_VERSION}/createNewUser`, newUserRouter);
-app.post(
-  `/api/${process.env.API_VERSION}/saveSleep`,
-  authenticateToken,
-  saveSleepRouter
-);
-app.get(
-  `/api/${process.env.API_VERSION}/sleepSaved`,
-  authenticateToken,
-  sleepSavedRouter
-);
+  const apiBaseRoute = `/api/${process.env.API_VERSION}`;
 
-app.get("/test", (req, res) => {
-  res.send("Hello World!");
-});
+  app.post(apiBaseRoute + "/newUser", createNewUser);
 
-app.get(
-  `/api/${process.env.API_VERSION}/getStuff`,
-  authenticateToken,
-  saveSleepRouter
-);
+  app.post(apiBaseRoute + "/sleep", authenticateToken, uploadSleep);
+  app.get(apiBaseRoute + "/sleep", authenticateToken, retrieveSleep);
 
-app.listen(3000, () => {
-  console.log(`Example app listening on port ${3000}`);
+  app.post(apiBaseRoute + "/steps", authenticateToken, uploadSteps);
+  app.get(apiBaseRoute + "/steps", authenticateToken, retrieveSteps);
+
+  app.post(apiBaseRoute + "/mood", authenticateToken, uploadMood);
+  app.get(apiBaseRoute + "/moods", authenticateToken, retrieveMoods);
+
+  app.post(apiBaseRoute + "/evaluation", authenticateToken, uploadEvaluation);
+  app.get(apiBaseRoute + "/evaluation", authenticateToken, retrieveEvaluation);
+
+  app.get(apiBaseRoute + "/prediction", authenticateToken, retrievePrediction);
+
+  app.listen(3000, () => {
+    console.log(`Example app listening on port ${3000}`);
+  });
 });

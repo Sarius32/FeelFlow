@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "This folder contains the Backend Service used to save the users input, work on the AI tasks to generate insides and provide this data to the users Application.",
-  "main": "server.js",
+  "main": "server.ts",
   "scripts": {
     "start": "nodemon --inspect server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
