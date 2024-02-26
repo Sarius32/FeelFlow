@@ -5,7 +5,7 @@ import cors from "cors";
 import express, { NextFunction, Response } from "express";
 import jwt from "jsonwebtoken";
 
-import { newUserRouter, saveSleepRouter, sleepSavedRouter } from "./routes";
+import { newUserRouter, saveSleepRouter, sleepSavedRouter, saveSleepEvaluation4YesterdayRouter, saveMoodRouter} from "./routes";
 import { UserRequest } from "./types";
 
 function authenticateToken(
@@ -39,6 +39,16 @@ app.post(
   `/api/${process.env.API_VERSION}/saveSleep`,
   authenticateToken,
   saveSleepRouter
+);
+app.post(
+  `/api/${process.env.API_VERSION}/saveSleepEvaluation4Yesterday`,
+  authenticateToken,
+  saveSleepEvaluation4YesterdayRouter
+);
+app.post(
+  `/api/${process.env.API_VERSION}/saveMood`,
+  authenticateToken,
+  saveMoodRouter
 );
 app.get(
   `/api/${process.env.API_VERSION}/sleepSaved`,
