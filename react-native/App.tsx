@@ -4,10 +4,10 @@ import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {NavigationContainer} from '@react-navigation/native';
 import React, {useEffect} from 'react';
 
-import {DataProvider} from './DataContext';
+import {BackendProvider} from './Contexts/BackendContext';
 
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {AuthProvider} from './AuthContext';
+import {AuthProvider} from './Contexts/AuthContext';
 import HomeScreen from './Screens/HomeScreen';
 import LoginScreen from './Screens/LoginScreen';
 
@@ -22,10 +22,10 @@ function App() {
 
   return (
     <AuthProvider>
-      <DataProvider>
+      <BackendProvider>
         <GluestackUIProvider config={config}>
           <NavigationContainer>
-            <AppStack.Navigator id="AppStack" initialRouteName="Home">
+            <AppStack.Navigator id="AppStack" initialRouteName="Login">
               <AppStack.Screen
                 name="Login"
                 component={LoginScreen}
@@ -39,7 +39,7 @@ function App() {
             </AppStack.Navigator>
           </NavigationContainer>
         </GluestackUIProvider>
-      </DataProvider>
+      </BackendProvider>
     </AuthProvider>
   );
 }

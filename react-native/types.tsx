@@ -1,6 +1,8 @@
+import {NavigatorScreenParams} from '@react-navigation/native';
+
 export type AppStackScreens = {
   Login: undefined;
-  Home: undefined;
+  Home: NavigatorScreenParams<HomeStackScreens>;
 };
 
 export type HomeStackScreens = {

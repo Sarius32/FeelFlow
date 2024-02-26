@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {PropsWithChildren, createContext, useContext, useState} from 'react';
 
 type AuthProvider = {
@@ -11,24 +12,21 @@ export const AuthProvider = ({children}: PropsWithChildren<{}>) => {
   const [username, setUsername] = useState<string>();
   const [jwtToken, setJwtToken] = useState<string>();
 
-  const login = async (name: string) => {
-    return await new Promise<boolean>((res, rej) => {
-      res(true);
-    });
+  const apiBaseUrl = 'http://89.247.229.118:1900/api/v1';
 
-    /*return await axios
-      .post(`${process.env.API_ENDPOINT}/createNewUser`, {username})
+  const login = async (name: string) => {
+    return await axios
+      .post(apiBaseUrl + '/newUser', {username: name})
       .then(res => {
-        setUsername(name);
+        setUsername(res.data.username);
         setJwtToken(res.data.token);
         console.log(`User ${name} logged in.`);
         return true;
       })
       .catch(err => {
-        if (isAxiosError(err)) console.log(err.request);
-        console.log('Error occured during login.', err.stack);
+        console.log('Error occured during login.', err);
         return false;
-      });*/
+      });
   };
 
   const getJWT = () => {
