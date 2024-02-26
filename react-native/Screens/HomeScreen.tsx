@@ -1,12 +1,13 @@
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import React from 'react';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {AppStackScreens, HomeStackScreens} from '../types';
 
-import MoodTrackScreen from './MoodTrackScreen';
-import OverviewScreen from './OverviewScreen';
+import {Icon} from '@gluestack-ui/themed';
+import {ActivitySquareIcon, ScanFaceIcon} from 'lucide-react-native';
+import TodayScreen from './TodayScreen';
+import YesterdayScreen from './YesterdayScreen';
 
 const HomeTab = createMaterialBottomTabNavigator<HomeStackScreens>();
 
@@ -14,25 +15,25 @@ const HomeScreen = ({}: NativeStackScreenProps<AppStackScreens, 'Home'>) => {
   return (
     <HomeTab.Navigator
       id="HomeStack"
-      initialRouteName="Overview"
+      initialRouteName="Today"
       barStyle={{height: 80}}>
       <HomeTab.Screen
-        name="MoodTrack"
-        component={MoodTrackScreen}
+        name="Yesterday"
+        component={YesterdayScreen}
         options={{
-          tabBarLabel: 'Your Mood',
+          tabBarLabel: 'Yesterday',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="graphql" color={color} size={26} />
+            <Icon as={ActivitySquareIcon} color={color} marginTop={2.5} />
           ),
         }}
       />
       <HomeTab.Screen
-        name="Overview"
-        component={OverviewScreen}
+        name="Today"
+        component={TodayScreen}
         options={{
-          tabBarLabel: 'Overview',
+          tabBarLabel: 'Today',
           tabBarIcon: ({color}) => (
-            <MaterialCommunityIcons name="graphql" color={color} size={26} />
+            <Icon as={ScanFaceIcon} color={color} marginTop={2.5} />
           ),
         }}
       />

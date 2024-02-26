@@ -8,7 +8,6 @@ import {
 import RNFS from 'react-native-fs';
 import googleFit, {BucketUnit, Scopes} from 'react-native-google-fit';
 
-import axios, {isAxiosError} from 'axios';
 import clone from 'just-clone';
 import {useAuth} from './AuthContext';
 import {MoodData, SleepData, StepData} from './types';
@@ -21,6 +20,11 @@ type DataProvider = {
   ) => Promise<{saved: boolean; loggedIn?: boolean}>;
   sleepHoursSavedForToday: () => Promise<boolean>;
   todaysSleepSaved: boolean;
+
+  getTodaysPrediction: () => Promise<number>;
+  getYesterdaysSteps: () => Promise<number>;
+  getYesterdaysSleep: () => Promise<number>;
+  getYesterdaysMood: () => Promise<{time: string; value: number}[]>;
 };
 
 const DataContext = createContext<DataProvider>({} as DataProvider);
@@ -160,7 +164,13 @@ export const DataProvider = ({children}: PropsWithChildren<{}>) => {
   };*/
 
   const saveSleepHours = async (hours: number) => {
-    return await axios
+    return await new Promise<{saved: boolean; loggedIn?: boolean}>(
+      (res, rej) => {
+        res({saved: true});
+      },
+    );
+
+    /*return await axios
       .post(
         `${process.env.API_ENDPOINT}/saveSleep`,
         {hours, date: new Date().toISOString().split('T')[0]},
@@ -178,12 +188,14 @@ export const DataProvider = ({children}: PropsWithChildren<{}>) => {
             return {saved: false, loggedIn: false};
         }
         return {saved: false, loggedIn: true};
-      });
+      });*/
   };
 
   const sleepHoursSavedForToday = async () => {
-    console.log(getJWT());
-    return await axios
+    return await new Promise<boolean>((res, rej) => {
+      res(true);
+    });
+    /*return await axios
       .get(`${process.env.API_ENDPOINT}/sleepSaved`, {
         params: {date: new Date().toISOString().split('T')[0]},
         headers: {Authorization: 'Bearer ' + getJWT()},
@@ -198,15 +210,54 @@ export const DataProvider = ({children}: PropsWithChildren<{}>) => {
       .catch(err => {
         setSleepSaved(false);
 
-        console.log('Error during retrival of saved sleep.', err);
+        console.log('Error during retrival of saved sleep.', err.stack);
         return false;
-      });
+      });*/
+  };
+
+  const getTodaysPrediction = async () => {
+    return await new Promise<number>((resolve, reject) => {
+      setTimeout(() => {
+        resolve(0);
+      }, 3022);
+    });
+  };
+
+  const getYesterdaysSteps = async () => {
+    return await new Promise<number>((resolve, reject) => {
+      setTimeout(() => {
+        resolve(1232);
+      }, 1000);
+    });
+  };
+
+  const getYesterdaysSleep = async () => {
+    return await new Promise<number>((resolve, reject) => {
+      setTimeout(() => {
+        resolve(6.25);
+      }, 1000);
+    });
+  };
+
+  const getYesterdaysMood = async () => {
+    return await new Promise<{time: string; value: number}[]>(
+      (resolve, reject) => {
+        setTimeout(() => {
+          resolve([
+            {time: '10:23:02', value: 2},
+            {time: '15:01:00', value: 1},
+            {time: '22:01:00', value: 4},
+            {time: '16:22:23', value: 5},
+          ]);
+        }, 1000);
+      },
+    );
   };
 
   useEffect(() => {
-    loadMoodData();
-    loadSleepData();
-    loadGoogleFitData();
+    // loadMoodData();
+    // loadSleepData();
+    // loadGoogleFitData();
   }, []);
 
   return (
@@ -217,6 +268,11 @@ export const DataProvider = ({children}: PropsWithChildren<{}>) => {
         saveSleepHours,
         todaysSleepSaved,
         sleepHoursSavedForToday,
+
+        getTodaysPrediction,
+        getYesterdaysSteps,
+        getYesterdaysSleep,
+        getYesterdaysMood,
       }}>
       {children}
     </DataContext.Provider>

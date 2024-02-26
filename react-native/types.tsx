@@ -4,8 +4,8 @@ export type AppStackScreens = {
 };
 
 export type HomeStackScreens = {
-  Overview: undefined;
-  MoodTrack: undefined;
+  Today: undefined;
+  Yesterday: undefined;
 };
 
 export type MoodData = {

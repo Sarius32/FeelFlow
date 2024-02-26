@@ -25,7 +25,7 @@ function App() {
       <DataProvider>
         <GluestackUIProvider config={config}>
           <NavigationContainer>
-            <AppStack.Navigator id="AppStack" initialRouteName="Login">
+            <AppStack.Navigator id="AppStack" initialRouteName="Home">
               <AppStack.Screen
                 name="Login"
                 component={LoginScreen}
