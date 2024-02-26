@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 
 import jwt from "jsonwebtoken";
-import { createUser, saveSleep, sleepSaved, userAvailable } from "./storage";
+import { createUser, saveSleep, sleepSaved, userAvailable, saveSleepEvaluation4Yesterday, saveMood } from "./storage";
 import { UserRequest } from "./types";
 
 const newUserRouter = (req: Request, res: Response) => {
@@ -45,4 +45,31 @@ const sleepSavedRouter = (req: UserRequest, res: Response) => {
   res.json({ saved });
 };
 
-export { newUserRouter, saveSleepRouter, sleepSavedRouter };
+const saveSleepEvaluation4YesterdayRouter = (req: UserRequest, res: Response) => {
+  const username = req.user.username;
+  const score = req.body.score;
+  const date = req.body.date;
+
+  if (!userAvailable(username)) return res.status(405);
+
+  saveSleepEvaluation4Yesterday(username, score, date);
+
+  res.status(200);
+  res.send("SleepEvaluation4YesterdaySaved");
+};
+
+const saveMoodRouter = (req: UserRequest, res: Response) => {
+  const username = req.user.username;
+  const MoodScore = req.body.score;
+  const time = req.body.time;
+  const date = req.body.date;
+
+  if (!userAvailable(username)) return res.status(405);
+  
+  saveMood(username, MoodScore, time, date);
+
+  res.status(200);
+  res.send("MoodSaved");
+};
+
+export { newUserRouter, saveSleepRouter, sleepSavedRouter, saveSleepEvaluation4YesterdayRouter, saveMoodRouter };
