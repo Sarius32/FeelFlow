@@ -1,12 +1,27 @@
+import {
+  AngryIcon,
+  ChevronsDownIcon,
+  ChevronsUpIcon,
+  FrownIcon,
+  LaughIcon,
+  MehIcon,
+  SmileIcon,
+  UnfoldVerticalIcon,
+} from 'lucide-react-native';
+
+const dateToDateISOString = (date = new Date()) => {
+  return date.toISOString().split('T')[0];
+};
+
 const getYesterdaysDateString = () => {
   const date = new Date();
   date.setDate(date.getDate() - 1);
 
-  return date.toISOString().split('T')[0];
+  return dateToDateISOString(date);
 };
 
 const getTodaysDateString = () => {
-  return new Date().toISOString().split('T')[0];
+  return dateToDateISOString();
 };
 
 const getCurrentTimeString = () => {
@@ -30,7 +45,7 @@ const convertHoursToString = (hours: number) => {
   return timeStr;
 };
 
-const convertMoodToLineData = (mood: {time: string; value: number}[]) => {
+const convertMoodsToLineData = (mood: {time: string; value: number}[]) => {
   const data = mood.map(e => {
     const dateTime = new Date();
     dateTime.setDate(dateTime.getDate() - 1);
@@ -49,14 +64,28 @@ const convertMoodToLineData = (mood: {time: string; value: number}[]) => {
   });
 };
 
-const convertEvaluationToString = (value: number) => {
-  return ['BAD', 'OK', 'GOOD'][value];
+const convertEvaluation = (value: number) => {
+  const options = [
+    {title: 'BAD', icon: ChevronsDownIcon, color: 'red'},
+    {title: 'OK', icon: UnfoldVerticalIcon, color: 'orange'},
+    {title: 'GOOD', icon: ChevronsUpIcon, color: 'green'},
+  ];
+
+  return options[value];
+};
+
+const convertMoodToIcon = (value: number) => {
+  const idx = Math.round(value);
+
+  return [AngryIcon, FrownIcon, MehIcon, SmileIcon, LaughIcon][idx];
 };
 
 export {
-  convertEvaluationToString,
+  convertEvaluation,
   convertHoursToString,
-  convertMoodToLineData,
+  convertMoodToIcon,
+  convertMoodsToLineData,
+  dateToDateISOString,
   getCurrentTimeString,
   getTodaysDateString,
   getYesterdaysDateString,

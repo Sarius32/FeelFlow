@@ -1,17 +1,8 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
-import RNFS from 'react-native-fs';
-import googleFit, {BucketUnit, Scopes} from 'react-native-google-fit';
-
 import axios from 'axios';
-import clone from 'just-clone';
-import {MoodData, SleepData, StepData} from '../types';
+import {PropsWithChildren, createContext, useContext, useEffect} from 'react';
+
 import {useAuth} from './AuthContext';
+import {useHealth} from './HealthContext';
 
 type SleepUpload = {
   loggedIn: boolean;
@@ -97,111 +88,13 @@ const BackendContext = createContext<BackendProviderProps>(
 );
 
 export const BackendProvider = ({children}: PropsWithChildren<{}>) => {
-  const [sleepSaved, setSleepSaved] = useState<boolean>(false);
-
-  const [todaysSleepSaved, setTodaysSleepSaved] = useState<boolean>(false);
-  const [sleepData, setSleepData] = useState<SleepData[]>([]);
-  const [moodData, setMoodData] = useState<MoodData[]>([]);
-  const [stepData, setStepData] = useState<StepData[]>([]);
-
-  const moodPath = RNFS.DocumentDirectoryPath + '/moodData.json';
-  const sleepPath = RNFS.DocumentDirectoryPath + '/sleepData.json';
-
   const {getJWT} = useAuth();
+  const {getGoogleFitSteps} = useHealth();
 
-  const apiBaseUrl = 'http://89.247.229.118:1900/api/v1';
+  const apiBaseUrl = 'http://88.130.59.185:1900/api/v1';
 
   const getJWTHeader = () => {
     return {headers: {Authorization: 'Bearer ' + getJWT()}};
-  };
-
-  const loadGoogleFitData = () => {
-    const authOptions = {
-      scopes: [Scopes.FITNESS_ACTIVITY_READ],
-    };
-
-    const stepOptions = {
-      startDate: new Date(
-        new Date().getTime() - 30 * 24 * 60 * 60 * 1000,
-      ).toISOString(),
-      endDate: new Date().toISOString(),
-      bucketUnit: BucketUnit.DAY,
-    };
-
-    googleFit
-      .authorize(authOptions)
-      .then(authResult => {
-        if (authResult.success) {
-          googleFit
-            .getDailyStepCountSamples(stepOptions)
-            .then(res => {
-              for (let ds of res) {
-                if (ds.source == 'com.google.android.gms:merge_step_deltas') {
-                  setStepData(ds.steps);
-                  console.log(
-                    'Successfully retrieved step data from Google Fit.',
-                  );
-                }
-              }
-            })
-            .catch(err =>
-              console.log('Error during Activity Sync with Google Fit.', err),
-            );
-        } else {
-          console.log("Couldn't authorize with Google Fit.");
-        }
-      })
-      .catch(err => console.log('Error during Auth for Google Fit.', err));
-  };
-
-  const loadMoodData = async () => {
-    try {
-      const jsonData = await RNFS.readFile(moodPath, 'utf8');
-      const savedData: {date: string; values: object}[] = JSON.parse(jsonData);
-
-      /* need to create Map from saved object */
-      const parsedData: MoodData[] = savedData.map(i => {
-        return {date: i.date, values: new Map(Object.entries(i.values))};
-      });
-
-      setMoodData(parsedData);
-      console.log(`Successfully loaded mood data from ${moodPath}.`);
-    } catch (e) {
-      console.log(`Couldn't load mood data from ${moodPath}.`, e);
-    }
-  };
-
-  const saveMood = async (mood: number) => {
-    const [date, time] = new Date()
-      .toISOString()
-      .replace('Z', '')
-      .split('T')
-      .map(str => str.split('.')[0]);
-
-    let updatedMoodData = clone(moodData);
-    let todaysMood = updatedMoodData.find(i => i.date == date);
-    if (todaysMood) {
-      if (!todaysMood.values) todaysMood.values = new Map();
-      todaysMood.values.set(time, mood);
-    } else {
-      updatedMoodData.push({date, values: new Map([[time, mood]])});
-    }
-
-    try {
-      /* need to convert Map into object */
-      const saveableData = updatedMoodData.map(i => {
-        return {
-          date: i.date,
-          values: Object.fromEntries(i.values ?? new Map()),
-        };
-      });
-
-      await RNFS.writeFile(moodPath, JSON.stringify(saveableData), 'utf8');
-      setMoodData(updatedMoodData);
-      console.log(`Successfully saved mood data to ${moodPath}.`);
-    } catch (e) {
-      console.log(`Couldn't save mood data to ${moodPath}.`, e);
-    }
   };
 
   const uploadSleep = async (date: string, hours: number) => {
