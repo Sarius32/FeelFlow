@@ -13,22 +13,12 @@ const OverviewScreen = ({}: NativeStackScreenProps<
   HomeStackScreens,
   'Overview'
 >) => {
-  const [sleepVisible, setSleepVisible] = useState(true);
-  const [yesterdayVisible, setYesterdayVisible] = useState(true);
+  const [sleepVisible, setSleepVisible] = useState(false);
+  const [yesterdayVisible, setYesterdayVisible] = useState(false);
 
   const {sleepHoursSavedForToday} = useAppData();
 
-  useEffect(() => {
-    sleepHoursSavedForToday().then(saved => {
-      setSleepVisible(!saved);
-    });
-  }, []);
 
-  useEffect(() => {
-    if (!sleepVisible) {
-      // check if eval for yesterday is needed
-    }
-  }, [sleepVisible]);
 
   return (
     <Center h="100%" w="100%">

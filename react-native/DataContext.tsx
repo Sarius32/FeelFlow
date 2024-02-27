@@ -204,9 +204,9 @@ export const DataProvider = ({children}: PropsWithChildren<{}>) => {
   };
 
   useEffect(() => {
-    loadMoodData();
-    loadSleepData();
-    loadGoogleFitData();
+    //loadMoodData();
+    //loadSleepData();
+    //loadGoogleFitData();
   }, []);
 
   return (
