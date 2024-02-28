@@ -28,7 +28,7 @@ const saveSleep = async (name: string, date: string, sleep: number) => {
 const loadSleep = async (name: string, date: string) => {
   return await getUserCollection(name)
     .findOne({ date })
-    .then((val) => val as WithId<{ date: string; sleep: number }>)
+    .then((val) => val as WithId<{ date: string; sleep?: number }>)
     .catch(() => {});
 };
 
