@@ -11,6 +11,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useState} from 'react';
 
 import {useAuth} from '../Contexts/AuthContext';
+
 import {AppStackScreens} from '../types';
 
 const LoginScreen = ({
@@ -29,7 +30,7 @@ const LoginScreen = ({
         <Button
           isDisabled={username ? false : true}
           onPress={() => {
-            login(username!).then(loggedIn => {
+            login(username!.trim().toLowerCase()).then(loggedIn => {
               if (loggedIn)
                 navigation.reset({index: 0, routes: [{name: 'Home'}]});
             });

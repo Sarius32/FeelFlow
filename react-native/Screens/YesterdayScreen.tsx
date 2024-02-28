@@ -3,25 +3,28 @@ import {
   HStack,
   Heading,
   Icon,
-  Spinner,
   Text,
   VStack,
 } from '@gluestack-ui/themed';
+import {MaterialBottomTabScreenProps} from '@react-navigation/material-bottom-tabs';
+import {CompositeScreenProps} from '@react-navigation/native';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {LucideIcon} from 'lucide-react-native';
 import React, {useEffect, useState} from 'react';
-import {VictoryAxis, VictoryChart, VictoryLine} from 'victory-native';
-
-import {AppStackScreens, HomeStackScreens} from '../types';
+import {
+  VictoryAxis,
+  VictoryChart,
+  VictoryLine,
+  VictoryScatter,
+} from 'victory-native';
 
 import {useAppData} from '../Contexts/BackendContext';
 
-import {MaterialBottomTabScreenProps} from '@react-navigation/material-bottom-tabs';
-import {CompositeScreenProps} from '@react-navigation/native';
-import {PlusIcon} from 'lucide-react-native';
+import {AppStackScreens, HomeStackScreens} from '../types';
 import {
-  convertEvaluationToString,
+  convertEvaluation,
   convertHoursToString,
-  convertMoodToLineData,
+  convertMoodsToLineData,
   getYesterdaysDateString,
 } from '../utils';
 
@@ -43,7 +46,11 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
   const [yMoods, setYMoods] = useState<{x: Date; y: number}[]>();
   const [yMoodsAvail, setYMoodsAvail] = useState<boolean>();
 
-  const [yEvaluation, setYEvaluation] = useState<string>();
+  const [yEvaluation, setYEvaluation] = useState<{
+    title: string;
+    icon: LucideIcon;
+    color: string;
+  }>();
   const [yEvalAvail, setYEvalAvail] = useState<boolean>();
 
   const yesterday = getYesterdaysDateString();
@@ -67,8 +74,8 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
         if (!res.loggedIn) navigation.navigate('Login');
 
         // sleep request went through
-        setYSleepAvail(res.avail!);
         if (res.avail) setYSleep(convertHoursToString(res.sleep!));
+        setYSleepAvail(res.avail!);
       });
 
     if (ySteps == undefined)
@@ -76,8 +83,8 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
         if (!res.loggedIn) navigation.navigate('Login');
 
         // steps request went through
-        setYStepsAvail(res.avail!);
         if (res.avail) setYSteps(res.steps!);
+        setYStepsAvail(res.avail!);
       });
 
     if (yMoods == undefined)
@@ -85,8 +92,8 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
         if (!res.loggedIn) navigation.navigate('Login');
 
         // moods request went through
+        if (res.avail) setYMoods(convertMoodsToLineData(res.moods!));
         setYMoodsAvail(res.avail!);
-        if (res.avail) setYMoods(convertMoodToLineData(res.moods!));
       });
 
     if (yEvaluation == undefined)
@@ -94,9 +101,8 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
         if (!res.loggedIn) navigation.navigate('Login');
 
         // evaluation request went through
+        if (res.avail) setYEvaluation(convertEvaluation(res.evaluation!));
         setYEvalAvail(res.avail!);
-        if (res.avail)
-          setYEvaluation(convertEvaluationToString(res.evaluation!));
       });
   }, []);
 
@@ -108,36 +114,42 @@ const YesterdayScreen = ({navigation}: YesterdayProps) => {
             Yesterdays was
           </Heading>
 
-          {yEvalAvail == undefined && (
+          {yEvalAvail == true && (
             <HStack>
-              <Spinner size="large" />
               <Center>
-                <Text marginLeft={10}>Loading</Text>
+                <Icon
+                  as={yEvaluation!.icon}
+                  color={yEvaluation!.color}
+                  size="xl"
+                  marginTop={5}
+                  marginRight={6}
+                />
               </Center>
+              <Heading size="xl">{yEvaluation!.title}</Heading>
             </HStack>
           )}
-          {yEvalAvail == true && <Heading size="xl">{yEvaluation}</Heading>}
         </Center>
 
         <Center>
-          {ySleepAvail != undefined && (
+          {ySleepAvail == true && (
             <HStack>
-              <Text>Hours slept: </Text>
-              {ySleepAvail && <Text>{ySleep}</Text>}
-              {!ySleepAvail && <Icon as={PlusIcon} />}
+              <Text>Hours slept: {ySleep}</Text>
             </HStack>
           )}
 
-          {yStepsAvail != undefined && (
+          {yStepsAvail == true && (
             <HStack>
-              <Text>Steps taken: </Text>
-              {yStepsAvail && <Text>{ySteps}</Text>}
-              {!yStepsAvail && <Icon as={PlusIcon} />}
+              <Text>Steps taken: {ySteps}</Text>
             </HStack>
           )}
 
-          {yMoodsAvail != undefined && yMoods && yMoods!.length > 0 && (
+          {yMoodsAvail == true && yMoods && yMoods!.length > 0 && (
             <VictoryChart>
+              <VictoryScatter
+                data={yMoods}
+                scale={'time'}
+                domain={getLineDomain()}
+              />
               <VictoryLine
                 data={yMoods}
                 interpolation="natural"

@@ -3,7 +3,6 @@ import {
   ButtonIcon,
   ButtonText,
   Center,
-  HStack,
   Heading,
   Icon,
   Modal,
@@ -19,39 +18,58 @@ import {
 } from '@gluestack-ui/themed';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {LucideIcon, SaveIcon} from 'lucide-react-native';
+import {SaveIcon} from 'lucide-react-native';
 import {useState} from 'react';
 
 import {useAppData} from '../Contexts/BackendContext';
 
 import {AppStackScreens} from '../types';
-import {convertEvaluation, getTodaysDateString} from '../utils';
+import {
+  convertMoodToIcon,
+  convertMoodsToLineData,
+  getCurrentTimeString,
+  getTodaysDateString,
+} from '../utils';
 
-type EvalModalProps = {
+type MoodModalProps = {
   shown: boolean;
   setShown: (value: boolean) => void;
+  setMoods: (value: {x: Date; y: number}[]) => void;
+  setMoodsAvail: (value: boolean) => void;
 };
 
-const EvalModal = ({shown, setShown}: EvalModalProps) => {
+const MoodModal = ({
+  shown,
+  setShown,
+  setMoods,
+  setMoodsAvail,
+}: MoodModalProps) => {
   const navigation =
     useNavigation<NativeStackNavigationProp<AppStackScreens>>();
-  const {uploadEvaluation} = useAppData();
+  const {uploadMood, retrieveMoods} = useAppData();
 
-  const [evaluation, setEvaluation] = useState(1);
-  const [evalDisp, setEvalDisp] = useState<{
-    title: string;
-    icon: LucideIcon;
-    color: string;
-  }>(convertEvaluation(1));
+  const [mood, setMood] = useState(2);
 
   const marginSty = {margin: 20};
 
   const handleSendPress = async () => {
     const today = getTodaysDateString();
-    uploadEvaluation(today, evaluation).then(res => {
+    const now = getCurrentTimeString();
+    uploadMood(today, now, mood).then(async res => {
       if (!res.loggedIn) return navigation.navigate('Login');
 
-      setShown(!res.uploaded);
+      if (res.uploaded) {
+        const moodsData = await retrieveMoods(today);
+
+        if (!moodsData.loggedIn) return navigation.navigate('Login');
+        setMoodsAvail(moodsData.avail!);
+
+        if (moodsData.avail) {
+          setMoods(convertMoodsToLineData(moodsData.moods!));
+        }
+
+        setShown(false);
+      }
     });
   };
 
@@ -60,19 +78,18 @@ const EvalModal = ({shown, setShown}: EvalModalProps) => {
       <ModalBackdrop />
       <ModalContent>
         <ModalHeader style={marginSty}>
-          <Heading size="lg">How was today?</Heading>
+          <Heading size="lg">
+            Enter the sleep hours of this nights sleep!
+          </Heading>
         </ModalHeader>
         <ModalBody style={marginSty} marginTop={10}>
           <Slider
             h={40}
             minValue={0}
-            maxValue={2}
-            step={1}
-            value={evaluation}
-            onChange={val => {
-              setEvaluation(val);
-              setEvalDisp(convertEvaluation(val));
-            }}>
+            maxValue={4}
+            step={0.01}
+            value={mood}
+            onChange={setMood}>
             <SliderTrack>
               <SliderFilledTrack />
             </SliderTrack>
@@ -80,21 +97,9 @@ const EvalModal = ({shown, setShown}: EvalModalProps) => {
           </Slider>
           <Center>
             <VStack w={200}>
-              <Center>
-                <HStack>
-                  <Center>
-                    <Icon
-                      as={evalDisp!.icon}
-                      color={evalDisp!.color}
-                      size="xl"
-                      marginTop={5}
-                      marginRight={6}
-                    />
-                  </Center>
-                  <Heading size="xl">{evalDisp!.title}</Heading>
-                </HStack>
+              <Center margin={5}>
+                <Icon as={convertMoodToIcon(mood)} size="xl" />
               </Center>
-
               <Center>
                 <Button
                   w={100}
@@ -112,4 +117,4 @@ const EvalModal = ({shown, setShown}: EvalModalProps) => {
   );
 };
 
-export default EvalModal;
+export default MoodModal;

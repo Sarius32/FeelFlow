@@ -2,12 +2,13 @@
 import {config} from '@gluestack-ui/config';
 import {GluestackUIProvider} from '@gluestack-ui/themed';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React, {useEffect} from 'react';
 
-import {BackendProvider} from './Contexts/BackendContext';
-
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {AuthProvider} from './Contexts/AuthContext';
+import {BackendProvider} from './Contexts/BackendContext';
+import {HealthProvider} from './Contexts/HealthContext';
+
 import HomeScreen from './Screens/HomeScreen';
 import LoginScreen from './Screens/LoginScreen';
 
@@ -22,24 +23,26 @@ function App() {
 
   return (
     <AuthProvider>
-      <BackendProvider>
-        <GluestackUIProvider config={config}>
-          <NavigationContainer>
-            <AppStack.Navigator id="AppStack" initialRouteName="Login">
-              <AppStack.Screen
-                name="Login"
-                component={LoginScreen}
-                options={noHeaderOptions}
-              />
-              <AppStack.Screen
-                name="Home"
-                component={HomeScreen}
-                options={noHeaderOptions}
-              />
-            </AppStack.Navigator>
-          </NavigationContainer>
-        </GluestackUIProvider>
-      </BackendProvider>
+      <HealthProvider>
+        <BackendProvider>
+          <GluestackUIProvider config={config}>
+            <NavigationContainer>
+              <AppStack.Navigator id="AppStack" initialRouteName="Login">
+                <AppStack.Screen
+                  name="Login"
+                  component={LoginScreen}
+                  options={noHeaderOptions}
+                />
+                <AppStack.Screen
+                  name="Home"
+                  component={HomeScreen}
+                  options={noHeaderOptions}
+                />
+              </AppStack.Navigator>
+            </NavigationContainer>
+          </GluestackUIProvider>
+        </BackendProvider>
+      </HealthProvider>
     </AuthProvider>
   );
 }
