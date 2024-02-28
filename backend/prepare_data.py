@@ -70,5 +70,13 @@ for i in range(len(dates)):
     end = pd.concat([end, new_line])
 
 output = end.drop(['date'], axis=1).values.tolist()
+a = []
+c = []
+for i in range(len(output)):
+    b = []
+    for j in range(len(output[i])):
+        b.append(str(output[i][j]))
+    c.append(','.join(b))
 
-print(output)
+print(c)
+
