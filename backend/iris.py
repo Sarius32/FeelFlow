@@ -65,10 +65,12 @@ def train(epochs,
 
   model.fit(data_x, data_y, batch_size=8, epochs=epochs)
 
-  # Run prediction on the training set.
+  # Run prediction on the training set. 
+  # To Moritz: input UR DATA here!!!
   pred_ys = np.argmax(model.predict([[8.5, 6.345, 3.15, 2.16, 3.60, 4.00]]), axis=1)
   true_ys = np.argmax(data_y, axis=1)
   final_train_accuracy = np.mean((pred_ys == true_ys).astype(np.float32))
+  # To Moritz: U can export pred_ys as the predict!!!
   print('Accuracy on the training set: %g' % pred_ys)
 
   tfjs.converters.save_keras_model(model, artifacts_dir)

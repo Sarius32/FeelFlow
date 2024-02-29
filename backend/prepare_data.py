@@ -81,5 +81,7 @@ for i in range(len(output)):
         b.append(str(output[i][j]))
     c.append(','.join(b))
 
-print(c)
+def data_export():
+    return c
+# print(c)
 
