@@ -6,10 +6,14 @@ with open('data.json', 'r') as file:
 
 matrix = []
 
+dates = []
+for i in range(len(data)):
+    dates.append(data[i].get('date', 0))
+
 for i in range(len(data)):
     date = data[i].get('date', 0)
     sleep = data[i].get('sleep', 0)
-    steps = data[i].get('steps', 0)
+    steps = data[i].get('steps', 0)/1000
     eval = data[i].get('evaluation', 0)
     moods = data[i].get('moods', 0)
 
@@ -21,13 +25,12 @@ for i in range(len(data)):
 import pandas as pd
 import numpy as np
 
-dates = ['2024-02-20', '2024-02-21', '2024-02-22', '2024-02-23', '2024-02-24', '2024-02-25', '2024-02-26', '2024-02-27']
 
 df = pd.DataFrame(matrix, columns=['date', 'hours', 'steps', 'mood', 'time', 'eval'])
 
 def day(date, res, loc):   
     
-    time = ['12:00:00', '14:00:00', '16:00:00', '18:00:00'] 
+    time = ['10:00:00', '12:00:00', '14:00:00', '16:00:00'] 
     for i in range(len(time)):
         res1 = res[res['time'].isin([time[i]])]
         hours = res['hours']
@@ -49,7 +52,7 @@ for i in dates:
     days = day(i, df[df['date']==i], df.loc[df.date==i,'date'].index[0])
     result = pd.concat([result, days])
 final = pd.DataFrame(columns=['date', 'hours', 'steps', 'mood', 'time', 'eval'])
-times = ['12:00:00', '14:00:00', '16:00:00', '18:00:00']
+times = ['10:00:00', '12:00:00', '14:00:00', '16:00:00']
 for i in times:
     final = pd.concat([final, result.loc[(result['time']==i)]])
 
