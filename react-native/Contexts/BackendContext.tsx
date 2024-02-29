@@ -2,7 +2,6 @@ import axios from 'axios';
 import {PropsWithChildren, createContext, useContext, useEffect} from 'react';
 
 import {useAuth} from './AuthContext';
-import {useHealth} from './HealthContext';
 
 type SleepUpload = {
   loggedIn: boolean;
@@ -89,9 +88,8 @@ const BackendContext = createContext<BackendProviderProps>(
 
 export const BackendProvider = ({children}: PropsWithChildren<{}>) => {
   const {getJWT} = useAuth();
-  const {getGoogleFitSteps} = useHealth();
 
-  const apiBaseUrl = 'http://88.130.59.185:1900/api/v1';
+  const apiBaseUrl = 'http://192.168.178.31:3000/api/v1';
 
   const getJWTHeader = () => {
     return {headers: {Authorization: 'Bearer ' + getJWT()}};

@@ -9,9 +9,9 @@ import {AuthProvider} from './Contexts/AuthContext';
 import {BackendProvider} from './Contexts/BackendContext';
 import {HealthProvider} from './Contexts/HealthContext';
 
+import notifee, {TimestampTrigger, TriggerType} from '@notifee/react-native';
 import HomeScreen from './Screens/HomeScreen';
 import LoginScreen from './Screens/LoginScreen';
-import notifee, { TimeStampTrigger, TriggerType } from '@notifee/react-native'
 import {AppStackScreens} from './types';
 
 const AppStack = createNativeStackNavigator<AppStackScreens>();
@@ -21,19 +21,19 @@ function App() {
 
   useEffect(() => {
     onCreateTriggerNotification();
-}, []);
+  }, []);
 
   async function onCreateTriggerNotification() {
     // Request permissions (required for iOS)
-    await notifee.requestPermission()
+    await notifee.requestPermission();
 
     const date = new Date(Date.now());
-    date.setHours(date.getHours()+2);
+    date.setHours(date.getHours() + 2);
 
     const channelId = await notifee.createChannel({
-          id: 'default',
-          name: 'Default Channel',
-        });
+      id: 'default',
+      name: 'Default Channel',
+    });
 
     // Create a time-based trigger
     const trigger: TimestampTrigger = {
@@ -43,27 +43,27 @@ function App() {
 
     // Create a trigger notification
     try {
-    await notifee.createTriggerNotification(
-      {
-        title: 'Mood Check',
-        body: 'Please Share Your Current Mood',
+      await notifee.createTriggerNotification(
+        {
+          title: 'Mood Check',
+          body: 'Please Share Your Current Mood',
 
-        android: {
-          channelId,
-          // pressAction is needed if you want the notification to open the app when pressed
-          pressAction: {
-           id: 'default',
+          android: {
+            channelId,
+            // pressAction is needed if you want the notification to open the app when pressed
+            pressAction: {
+              id: 'default',
+            },
+            timestamp: Date.now(),
+            showTimestamp: true,
           },
-          timestamp: Date.now(),
-          showTimestamp: true,
         },
-      },
-      trigger,
-    );
+        trigger,
+      );
     } catch (e) {
-    console.log(e)}
+      console.log(e);
+    }
   }
-  const onClearNotification = () => {};
 
   return (
     <AuthProvider>

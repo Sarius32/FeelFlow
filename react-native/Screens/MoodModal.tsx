@@ -78,9 +78,7 @@ const MoodModal = ({
       <ModalBackdrop />
       <ModalContent>
         <ModalHeader style={marginSty}>
-          <Heading size="lg">
-            Enter the sleep hours of this nights sleep!
-          </Heading>
+          <Heading size="lg">How are you feeling?</Heading>
         </ModalHeader>
         <ModalBody style={marginSty} marginTop={10}>
           <Slider

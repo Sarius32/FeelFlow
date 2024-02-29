@@ -45,13 +45,8 @@ type TodayProps = CompositeScreenProps<
 >;
 
 const TodayScreen = ({navigation}: TodayProps) => {
-  const {
-    retrieveSleep,
-    retrieveSteps,
-    retrieveMoods,
-    retrievePrediction,
-    uploadSteps,
-  } = useAppData();
+  const {retrieveSleep, retrieveMoods, retrievePrediction, uploadSteps} =
+    useAppData();
   const {getGoogleFitSteps} = useHealth();
 
   const [steps, setSteps] = useState<number>();
