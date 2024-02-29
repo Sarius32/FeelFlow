@@ -91,7 +91,7 @@ export const BackendProvider = ({children}: PropsWithChildren<{}>) => {
   const {getJWT} = useAuth();
   const {getGoogleFitSteps} = useHealth();
 
-  const apiBaseUrl = 'http://88.130.59.185:1900/api/v1';
+  const apiBaseUrl = 'http://89.247.230.249:1900/api/v1';
 
   const getJWTHeader = () => {
     return {headers: {Authorization: 'Bearer ' + getJWT()}};
