@@ -54,7 +54,7 @@ const retrieveSleep = async (req: UserRequest, res: Response) => {
   const response = { avail: false, date: undefined, sleep: undefined };
 
   const data = await loadSleep(username, date as string);
-  if (data && data.sleep) {
+  if (data && data.sleep != undefined) {
     console.log(`Retrieved sleep (${username}, ${date}).`);
 
     response.avail = true;
@@ -93,7 +93,7 @@ const retrieveSteps = async (req: UserRequest, res: Response) => {
   const response = { avail: false, date: undefined, steps: undefined };
 
   const data = await loadSteps(username, date as string);
-  if (data && data.steps) {
+  if (data && data.steps != undefined) {
     console.log(`Retrieved steps (${username}, ${date}).`);
 
     response.avail = true;
@@ -139,7 +139,7 @@ const retrieveMoods = async (req: UserRequest, res: Response) => {
   const response = { avail: false, date: undefined, moods: undefined };
 
   const data = await loadMoods(username, date as string);
-  if (data && data.moods) {
+  if (data && data.moods != undefined) {
     console.log(`Retrieved moods (${username}, ${date}).`);
 
     response.avail = true;
@@ -178,7 +178,7 @@ const retrieveEvaluation = async (req: UserRequest, res: Response) => {
   const response = { avail: false, date: undefined, evaluation: undefined };
 
   const data = await loadEvaluation(username, date as string);
-  if (data && data.evaluation) {
+  if (data && data.evaluation != undefined) {
     console.log(`Retrieved evaluation (${username}, ${date}).`);
 
     response.avail = true;
@@ -197,7 +197,7 @@ const retrievePrediction = async (req: UserRequest, res: Response) => {
   const response = { avail: false, date: undefined, prediction: undefined };
 
   const data = await loadPredication(username, date as string);
-  if (data && data.prediction) {
+  if (data && data.prediction != undefined) {
     console.log(`Retrieved prediction (${username}, ${date}).`);
 
     response.avail = true;
