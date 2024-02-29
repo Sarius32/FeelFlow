@@ -12,7 +12,7 @@ export const AuthProvider = ({children}: PropsWithChildren<{}>) => {
   const [username, setUsername] = useState<string>();
   const [jwtToken, setJwtToken] = useState<string>();
 
-  const apiBaseUrl = 'http://89.247.230.249:1900/api/v1';
+  const apiBaseUrl = 'http://10.181.65.210:3000/api/v1';
 
   const login = async (name: string) => {
     return await axios
